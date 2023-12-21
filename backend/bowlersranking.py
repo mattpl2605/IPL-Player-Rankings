@@ -12,15 +12,18 @@ data['Max Economy'] = data['Economy'].max()
 data['Max Bowling Average'] = data['Bowling Average'].max()
 data['Max Bowling Strike Rate'] = data['Bowling Strike Rate'].max()
 
+# Weights for each statistic
 w_wkts = 0.40
 w_econ = 0.25
 w_avg = 0.20
 w_sr = 0.15
+
+#Function to calculate bowler ratings
 def calculate_bowler_rating(wkts, econ, avg, sr, m_wkts, m_econ, m_avg, m_sr, wkts_wt, econ_wt, avg_wt, sr_wt):
     rating = ((wkts / m_wkts) * wkts_wt) + ((1 - (econ / m_econ)) * econ_wt) + ((1 - (avg / m_avg)) * avg_wt) + ((1 - (sr / m_sr)) * sr_wt)
     return 100 * rating
 
-
+#Calculate the Bowler Rating with the new weights
 data['Bowler Rating'] = data.apply(
     lambda row: calculate_bowler_rating(
         row['Wickets'],
