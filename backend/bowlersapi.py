@@ -43,7 +43,6 @@ try:
                 "Bowling Average": cols[10].text.strip(),
                 "Economy": cols[11].text.strip(),
                 "Bowling Strike Rate": cols[12].text.strip(),
-                # Add other columns as necessary
             }
             data.append(data_row)
 

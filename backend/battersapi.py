@@ -42,7 +42,6 @@ try:
                 "Runs": cols[5].text.strip(),
                 "Batting Average": cols[7].text.strip(),
                 "Batting Strike Rate": cols[9].text.strip(),
-                # Add other columns as necessary
             }
             data.append(data_row)
 

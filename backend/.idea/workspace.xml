@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b014d9a-6b8b-4add-b2a9-af6213748ce6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/battersapi.py" beforeDir="false" afterPath="$PROJECT_DIR$/battersapi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/battingrankings.py" beforeDir="false" afterPath="$PROJECT_DIR$/battingrankings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bowlersranking.py" beforeDir="false" afterPath="$PROJECT_DIR$/bowlersranking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ipl.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orange-cap-ipl-2023.csv" beforeDir="false" afterPath="$PROJECT_DIR$/orange-cap-ipl-2023.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bowlersapi.py" beforeDir="false" afterPath="$PROJECT_DIR$/bowlersapi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,11 +22,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/battersapi.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/battingrankings.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/bowlersapi.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/bowlersranking.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/orange-cap-ipl-2023.csv" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/purple-cap-ipl-2023.csv" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/rankings.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
