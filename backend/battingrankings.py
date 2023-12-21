@@ -6,25 +6,34 @@ data = pd.read_csv(file_path)
 data['Batting Average'] = pd.to_numeric(data['Batting Average'], errors='coerce')
 
 #Normalize all statistics
-max_runs = data['Runs'].max()
-max_average = data['Batting Average'].max()
-max_strike_rate = data['Batting Strike Rate'].max()
+def normalize_column(column):
+    return column / column.max()
 
-data['Normalized Runs'] = data['Runs'] / max_runs
-data['Normalized Batting Average'] = data['Batting Average'] / max_average
-data['Normalized Strike Rate'] = data['Batting Strike Rate'] / max_strike_rate
+data['Normalized Runs'] = normalize_column(data['Runs'])
+data['Normalized Batting Average'] = normalize_column(data['Batting Average'])
+data['Normalized Strike Rate'] = normalize_column(data['Batting Strike Rate'])
 
 # Increased weight to runs, then strike rate, then average
 runs_weight = 0.43
 strike_rate_weight = 0.34
 batting_average_weight = 0.23
 
-#Calculate the Batter Rating with the new weights
-data['Batter Rating (New Weights)'] = (runs_weight * data['Normalized Runs'] + strike_rate_weight * data['Normalized Strike Rate']
-                                       + batting_average_weight * data['Normalized Batting Average'])
+#Function to calculate batter ratings
+def calculate_batter_rating(norm_runs, norm_strike_rate, norm_avg, runs_wt, sr_wt, avg_wt):
+    return 100 * (runs_wt * norm_runs + sr_wt * norm_strike_rate + avg_wt * norm_avg)
 
-#Multiply it by 100 for scaling issues
-data['Batter Rating (New Weights)'] *= 100
+#Calculate the Batter Rating with the new weights
+data['Batter Rating (New Weights)'] = data.apply(
+    lambda row: calculate_batter_rating(
+        row['Normalized Runs'],
+        row['Normalized Strike Rate'],
+        row['Normalized Batting Average'],
+        runs_weight,
+        strike_rate_weight,
+        batting_average_weight
+    ),
+    axis=1
+)
 
 top_15 = data[['Player', 'Runs', 'Batting Average', 'Batting Strike Rate', 'Batter Rating (New Weights)']].sort_values(by='Batter Rating (New Weights)', ascending=False).head(15)
 print(top_15)
