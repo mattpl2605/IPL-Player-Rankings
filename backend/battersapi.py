@@ -26,7 +26,7 @@ try:
     page_source = driver.page_source
     soup = BeautifulSoup(page_source, "html.parser")
 
-    # Find the table containing the Purple Cap data
+    # Find the table containing the Orange Cap data
     table = soup.find("table", {"class": "ds-w-full"})
     rows = table.find_all("tr")[1:]  # Skip the header row
 
