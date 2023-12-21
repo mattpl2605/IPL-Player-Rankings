@@ -51,6 +51,9 @@ def calculate_batter_rating(runs, norm_runs, norm_strike_rate, norm_avg, runs_wt
 def get_bowler_ratings():
     data = pd.read_csv(purple_path)
 
+    #Remove the Unnamed column
+    data.drop(columns=['Unnamed: 0'], inplace=True)
+
     #Calculate the maximum values for each statistic
     data['Max Wickets'] = max_column(data['Wickets'])
     data['Max Economy'] = max_column(data['Economy'])
@@ -84,6 +87,9 @@ def get_bowler_ratings():
 @app.route('/get-batter-ratings', methods=['GET'])
 def get_batter_ratings():
     data = pd.read_csv(orange_path)
+
+    # Remove the Unnamed column
+    data.drop(columns=['Unnamed: 0'], inplace=True)
 
     data['Runs'] = pd.to_numeric(data['Runs'], errors='coerce')
     data['Batting Strike Rate'] = pd.to_numeric(data['Batting Strike Rate'], errors='coerce')
