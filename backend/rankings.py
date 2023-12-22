@@ -79,10 +79,13 @@ def get_bowler_ratings():
         axis=1
     )
 
-    #Sort in descending order
-    data.sort_values(by='Bowler Rating', ascending=False, inplace=True)
+    # Calculate the rank for each batter
+    data['Rank'] = data['Bowler Rating'].rank(ascending=False, method='min')
 
-    return jsonify(data.to_dict(orient='records'))
+    # Sort DataFrame by the rank
+    sorted_data = data.sort_values(by='Rank', ascending=True)
+
+    return jsonify(sorted_data.to_dict(orient='records'))
 
 @app.route('/get-batter-ratings', methods=['GET'])
 def get_batter_ratings():
@@ -119,10 +122,13 @@ def get_batter_ratings():
         axis=1
     )
 
-    # Sort in descending order
-    data.sort_values(by='Batter Rating', ascending=False, inplace=True)
+    #Calculate the rank for each batter
+    data['Rank'] = data['Batter Rating'].rank(ascending=False, method='min')
 
-    return jsonify(data.to_dict(orient='records'))
+    #Sort DataFrame by the rank
+    sorted_data = data.sort_values(by='Rank', ascending=True)
+
+    return jsonify(sorted_data.to_dict(orient='records'))
 
 if __name__ == '__main__':
     app.run(debug=True)
