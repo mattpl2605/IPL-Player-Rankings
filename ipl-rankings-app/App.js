@@ -1,53 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen'; // Import the refactored HomeScreen
+import BatterRankingsScreen from './screens/BatterRankingsScreen'; // Import BatterRankingsScreen
+import BowlerRankingsScreen from './screens/BowlerRankingsScreen'; // Import BowlerRankingsScreen
 
-export default function App() {
-  const [season, setSeason] = useState(null);
-  const [open, setOpen] = useState(false);
-  const [items, setItems] = useState([
-    {label: '2023', value: '2023'},
-    // Add other IPL seasons here
-    // {label: 'Year', value: 'Year'}
-  ]);
+const Stack = createNativeStackNavigator();
 
+function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Select an IPL Season</Text>
-      <DropDownPicker
-        open={open}
-        value={season}
-        items={items}
-        setOpen={setOpen}
-        setValue={setSeason}
-        setItems={setItems}
-        zIndex={3000}
-        zIndexInverse={1000}
-      />
-      {season && (
-        <View style={styles.buttonContainer}>
-          <Button title="Batter Rankings" onPress={() => {/* Implement action */}} />
-          <Button title="Bowler Rankings" onPress={() => {/* Implement action */}} />
-        </View>
-      )}
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="BatterRankings" component={BatterRankingsScreen} />
+        <Stack.Screen name="BowlerRankings" component={BowlerRankingsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 20,
-    marginBottom: 20,
-  },
-  buttonContainer: {
-    marginTop: 20,
-    width: '100%',
-  },
-});
+export default App;
