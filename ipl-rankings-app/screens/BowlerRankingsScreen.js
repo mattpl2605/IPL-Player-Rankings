@@ -29,7 +29,7 @@ const BatterRankingsScreen = () => {
   const renderItem = ({ item, index }) => (
     <View style={styles.item}>
       <Text style={styles.column}>{index + 1}</Text>
-      <Text style={styles.column}>{item.Player}</Text>
+      <Text style={styles.column}>{item['BowlerName']}</Text>
       <Text style={styles.column}>{item['Bowler Rating'].toFixed(2)}</Text>
     </View>
   );

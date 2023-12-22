@@ -46,14 +46,12 @@ def calculate_batter_rating(runs, norm_runs, norm_strike_rate, norm_avg, runs_wt
 def get_bowler_ratings():
     data = pd.read_csv(bowler_path)
 
-    data['Normalized Wickets'] = (data['Wickets'] - data['Wickets'].min()) / (
-                data['Wickets'].max() - data['Wickets'].min())
-    data['Normalized Economy'] = 1 - (data['EconomyRate'] - data['EconomyRate'].min()) / (
-                data['EconomyRate'].max() - data['EconomyRate'].min())
-    data['Normalized Bowling Average'] = 1 - (data['BowlingAverage'] - data['BowlingAverage'].min()) / (
-                data['BowlingAverage'].max() - data['BowlingAverage'].min())
-    data['Normalized Strike Rate'] = 1 - (data['StrikeRate'] - data['StrikeRate'].min()) / (
-                data['StrikeRate'].max() - data['StrikeRate'].min())
+
+    #Calculate the normalized values for each statistic
+    data['Normalized Wickets'] = (data['Wickets'] - data['Wickets'].min()) / (data['Wickets'].max() - data['Wickets'].min())
+    data['Normalized Economy'] = 1 - (data['EconomyRate'] - data['EconomyRate'].min()) / (data['EconomyRate'].max() - data['EconomyRate'].min())
+    data['Normalized Bowling Average'] = 1 - (data['BowlingAverage'] - data['BowlingAverage'].min()) / (data['BowlingAverage'].max() - data['BowlingAverage'].min())
+    data['Normalized Bowling Strike Rate'] = 1 - (data['BowlingSR'] - data['BowlingSR'].min()) / (data['BowlingSR'].max() - data['BowlingSR'].min())
 
     # Calculate the Bowler Rating with the new weights
     data['Bowler Rating'] = data.apply(
@@ -62,7 +60,7 @@ def get_bowler_ratings():
             row['Normalized Wickets'],
             row['Normalized Economy'],
             row['Normalized Bowling Average'],
-            row['Normalized Strike Rate'],
+            row['Normalized Bowling Strike Rate'],
             w_wkts,
             w_econ,
             w_avg,
