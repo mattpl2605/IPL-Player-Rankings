@@ -4,10 +4,10 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 #Filepath to Purple Cap CSV file
-purple_path = 'purple-cap-ipl-2023.csv'
+purple_path = 'oldcsvs/old-purple-cap-ipl-2023.csv'
 
 #Filepath to Orange Cap CSV file
-orange_path = 'orange-cap-ipl-2023.csv'
+orange_path = 'oldcsvs/old-orange-cap-ipl-2023.csv'
 
 
 #Function that calculates maximum values

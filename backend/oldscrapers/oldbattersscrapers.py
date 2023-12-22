@@ -11,8 +11,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
+stats = []
 driver = webdriver.Chrome(ChromeDriverManager().install())
-url = "https://www.espncricinfo.com/records/tournament/bowling-most-wickets-career/indian-premier-league-2023-15129"
+url = "https://www.espncricinfo.com/records/tournament/batting-most-runs-career/indian-premier-league-2023-15129"
 driver.get(url)
 
 try:
@@ -25,7 +26,7 @@ try:
     page_source = driver.page_source
     soup = BeautifulSoup(page_source, "html.parser")
 
-    # Find the table containing the Purple Cap data
+    # Find the table containing the Orange Cap data
     table = soup.find("table", {"class": "ds-w-full"})
     rows = table.find_all("tr")[1:]  # Skip the header row
 
@@ -38,11 +39,9 @@ try:
                 "Player": cols[0].text.strip(),
                 "Matches": cols[2].text.strip(),
                 "Innings": cols[3].text.strip(),
-                "Overs Bowled": cols[5].text.strip(),
-                "Wickets": cols[8].text.strip(),
-                "Bowling Average": cols[10].text.strip(),
-                "Economy": cols[11].text.strip(),
-                "Bowling Strike Rate": cols[12].text.strip(),
+                "Runs": cols[5].text.strip(),
+                "Batting Average": cols[7].text.strip(),
+                "Batting Strike Rate": cols[9].text.strip(),
             }
             data.append(data_row)
 
@@ -53,6 +52,4 @@ finally:
 df = pd.DataFrame(data)
 
 # Save to CSV
-df.to_csv("purple-cap-ipl-2023.csv")
-
-
+df.to_csv("old-orange-cap-ipl-2023.csv")

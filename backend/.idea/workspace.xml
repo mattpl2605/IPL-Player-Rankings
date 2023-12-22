@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b014d9a-6b8b-4add-b2a9-af6213748ce6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/batterscraper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bowlerscraper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/battersapi.py" beforeDir="false" afterPath="$PROJECT_DIR$/oldscrapers/oldbattersscrapers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bowlersapi.py" beforeDir="false" afterPath="$PROJECT_DIR$/oldscrapers/oldbowlersscrapers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orange-cap-ipl-2023.csv" beforeDir="false" afterPath="$PROJECT_DIR$/oldcsvs/old-orange-cap-ipl-2023.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/purple-cap-ipl-2023.csv" beforeDir="false" afterPath="$PROJECT_DIR$/oldcsvs/old-purple-cap-ipl-2023.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rankings.py" beforeDir="false" afterPath="$PROJECT_DIR$/rankings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +27,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/battersapi.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/bowlersapi.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/orange-cap-ipl-2023.csv" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/purple-cap-ipl-2023.csv" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/oldcsvs/old-orange-cap-ipl-2023.csv" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/oldcsvs/old-purple-cap-ipl-2023.csv" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/oldscrapers/oldbattersscrapers.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/oldscrapers/oldbowlersscrapers.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/rankings.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -41,6 +48,12 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/oldcsvs" />
+      <recent name="$PROJECT_DIR$/oldscrapers" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
