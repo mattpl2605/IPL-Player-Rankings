@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b014d9a-6b8b-4add-b2a9-af6213748ce6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/battingprofileapi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batters-ipl.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/batterscraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/batterscraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bowlers-ipl.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bowlerscraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/bowlerscraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oldcsvs/old-purple-cap-ipl-2023.csv" beforeDir="false" afterPath="$PROJECT_DIR$/old-purple-cap-ipl-2023.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rankings.py" beforeDir="false" afterPath="$PROJECT_DIR$/rankings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
