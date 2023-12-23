@@ -17,7 +17,7 @@ parsed_data = json.loads(json_data)
 # Convert JSON to DataFrame
 df = pd.DataFrame(parsed_data)
 
-# Proces each row to convert JSON-like strings into dictionaries
+# Process each row to convert JSON-like strings into dictionaries
 converted_rows = [row for row in df[df.columns[0]]]
 
 # Create a new DataFrame from the converted data
