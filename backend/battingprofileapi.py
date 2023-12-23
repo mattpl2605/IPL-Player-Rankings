@@ -15,7 +15,12 @@ def extract_profile_data(url):
 
         # Extract and process player description and grid container
         player_description = soup.find('div', class_='ih-td-text')
-        player_description_text = player_description.get_text(strip=True) if player_description else None
+        player_description_text = player_description.get_text(strip=True)
+        if player_description:
+            player_description_text = player_description.get_text(strip=True)
+            player_description_text = player_description_text.replace('\n', '')
+        else:
+            None
         grid_container = soup.find('div', class_='grid-container')
         grid_container_text = ' | '.join([': '.join([item.find('span').get_text(strip=True), item.find('p').get_text(strip=True)]) for item in grid_container.find_all('div', class_='grid-items')]) if grid_container else None
 
