@@ -1,22 +1,36 @@
+// BatterRankingsScreen.js
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const BatterRankingsScreen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigation = useNavigation();
 
   useEffect(() => {
     fetch('http://127.0.0.1:5000/get-batter-ratings')
-      .then((response) => response.json())
-      .then((json) => {
+      .then(response => response.json())
+      .then(json => {
         setData(json);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error);
         setLoading(false);
       });
   }, []);
+
+  const fetchBatterProfile = name => {
+    fetch(`http://127.0.0.1:5000/get-batter-profile?name=${encodeURIComponent(name)}`)
+      .then(response => response.json())
+      .then(json => {
+        navigation.navigate('BatterProfileScreen', { batterProfile: json });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   const renderHeader = () => (
     <View style={styles.header}>
@@ -29,7 +43,9 @@ const BatterRankingsScreen = () => {
   const renderItem = ({ item, index }) => (
     <View style={styles.item}>
       <Text style={styles.column}>{index + 1}</Text>
-      <Text style={styles.column}>{item['StrikerName']}</Text>
+      <TouchableOpacity onPress={() => fetchBatterProfile(item['StrikerName'])}>
+        <Text style={styles.column}>{item['StrikerName']}</Text>
+      </TouchableOpacity>
       <Text style={styles.column}>{item['Batter Rating'].toFixed(2)}</Text>
     </View>
   );
@@ -53,33 +69,29 @@ const BatterRankingsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 20,
-    paddingHorizontal: 10,
+    backgroundColor: '#f0f0f0',
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     padding: 10,
-    backgroundColor: '#ddd',
+    backgroundColor: '#e0e0e0',
   },
   headerText: {
-    fontSize: 16,
-    fontWeight: 'bold',
     flex: 1,
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   item: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    borderBottomColor: '#e0e0e0',
   },
   column: {
-    fontSize: 16,
     flex: 1,
     textAlign: 'center',
   },
 });
+
 
 export default BatterRankingsScreen;
