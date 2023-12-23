@@ -1,22 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const BatterRankingsScreen = () => {
+const BowlerRankingsScreen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigation = useNavigation();
 
   useEffect(() => {
     fetch('http://127.0.0.1:5000/get-bowler-ratings')
-      .then((response) => response.json())
-      .then((json) => {
+      .then(response => response.json())
+      .then(json => {
         setData(json);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error);
         setLoading(false);
       });
   }, []);
+
+  const fetchBowlerProfile = name => {
+    fetch(`http://127.0.0.1:5000/get-bowler-profile?name=${encodeURIComponent(name)}`)
+      .then(response => response.json())
+      .then(json => {
+        navigation.navigate('BowlerProfileScreen', { bowlerProfile: json });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   const renderHeader = () => (
     <View style={styles.header}>
@@ -29,7 +42,9 @@ const BatterRankingsScreen = () => {
   const renderItem = ({ item, index }) => (
     <View style={styles.item}>
       <Text style={styles.column}>{index + 1}</Text>
-      <Text style={styles.column}>{item['BowlerName']}</Text>
+      <TouchableOpacity onPress={() => fetchBowlerProfile(item['BowlerName'])}>
+        <Text style={styles.column}>{item['BowlerName']}</Text>
+      </TouchableOpacity>
       <Text style={styles.column}>{item['Bowler Rating'].toFixed(2)}</Text>
     </View>
   );
@@ -82,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BatterRankingsScreen;
+export default BowlerRankingsScreen;

@@ -5,6 +5,7 @@ import HomeScreen from './screens/HomeScreen'; // Import the refactored HomeScre
 import BatterRankingsScreen from './screens/BatterRankingsScreen'; // Import BatterRankingsScreen
 import BowlerRankingsScreen from './screens/BowlerRankingsScreen'; // Import BowlerRankingsScreen
 import BatterProfileScreen from './screens/BatterProfileScreen'; // Import BatterProfileScreen
+import BowlerProfileScreen from './screens/BowlerProfileScreen'; // Import BowlerProfileScreen
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ function App() {
         <Stack.Screen name="BatterRankings" component={BatterRankingsScreen} />
         <Stack.Screen name="BowlerRankings" component={BowlerRankingsScreen} />
         <Stack.Screen name="BatterProfileScreen" component={BatterProfileScreen} />
+        <Stack.Screen name="BowlerProfileScreen" component={BowlerProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

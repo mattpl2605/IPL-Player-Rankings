@@ -1,25 +1,27 @@
-// BatterProfileScreen.js
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
-const BatterProfileScreen = ({ route }) => {
-  const { batterProfile } = route.params;
+const BowlerProfileScreen = ({ route }) => {
+  const { bowlerProfile } = route.params;
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.name}>{batterProfile.batter_name}</Text>
-      <Text style={styles.gridContainer}>{batterProfile.grid_container}</Text>
-      <Text style={styles.description}>{batterProfile.player_description}</Text>
-      {batterProfile.player_statistics.map((stat, index) => (
+      <Text style={styles.name}>{bowlerProfile.bowler_name}</Text>
+      <Text style={styles.gridContainer}>{bowlerProfile.grid_container}</Text>
+      <Text style={styles.description}>{bowlerProfile.player_description}</Text>
+      {bowlerProfile.player_statistics.map((stat, index) => (
         <View key={index} style={styles.statContainer}>
           <Text>Year: {stat.Year}</Text>
           <Text>Matches: {stat.Mat}</Text>
-          <Text>Runs: {stat.Runs}</Text>
-          <Text>Avg: {stat.Avg}</Text>
-          <Text>SR: {stat.SR}</Text>
-          <Text>50s: {stat['50']}</Text>
-          <Text>100s: {stat['100']}</Text>
-          <Text>HS: {stat['HS']}</Text>
+          <Text>Wickets: {stat.WKTS}</Text>
+          <Text>Average: {stat.Ave}</Text>
+          <Text>Economy: {stat.Econ}</Text>
+          <Text>Best Bowling in Match: {stat.BBM}</Text>
+          <Text>4 Wickets in Innings: {stat["4W"]}</Text>
+          <Text>5 Wickets in Innings: {stat["5W"]}</Text>
+          <Text>Strike Rate: {stat.SR}</Text>
+          <Text>Runs Conceded: {stat.Runs}</Text>
+          <Text>Balls Bowled: {stat.Balls}</Text>
         </View>
       ))}
     </ScrollView>
@@ -56,5 +58,4 @@ const styles = StyleSheet.create({
     },
   });
   
-
-export default BatterProfileScreen;
+export default BowlerProfileScreen;
