@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b014d9a-6b8b-4add-b2a9-af6213748ce6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bowlerprofileapi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/battingprofileapi.py" beforeDir="false" afterPath="$PROJECT_DIR$/battingprofileapi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
