@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, ActivityIndicator, TextInput, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  ActivityIndicator,
+  TextInput,
+  TouchableOpacity
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const BowlerRankingsScreen = () => {
   const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);  // New state for filtered data
+  const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const navigation = useNavigation();
@@ -14,7 +22,7 @@ const BowlerRankingsScreen = () => {
       .then(response => response.json())
       .then(json => {
         setData(json);
-        setFilteredData(json);  // Initialize filteredData with all data
+        setFilteredData(json);
         setLoading(false);
       })
       .catch(error => {
@@ -28,7 +36,7 @@ const BowlerRankingsScreen = () => {
       item['BowlerName'].toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredData(filtered);
-  }, [searchQuery, data]);  // Filtering in useEffect
+  }, [searchQuery, data]);
 
   const fetchBowlerProfile = name => {
     fetch(`http://127.0.0.1:5000/get-bowler-profile?name=${encodeURIComponent(name)}`)
@@ -43,19 +51,19 @@ const BowlerRankingsScreen = () => {
 
   const renderHeader = () => (
     <View style={styles.header}>
-      <Text style={styles.headerText}>Rank</Text>
-      <Text style={styles.headerText}>Player</Text>
-      <Text style={styles.headerText}>Rating</Text>
+      <Text style={[styles.rank, { fontWeight: 'bold' }]}>Rank</Text>
+      <Text style={[styles.playerName, { fontWeight: 'bold' }]}>Player</Text>
+      <Text style={[styles.rating, { fontWeight: 'bold' }]}>Rating</Text>
     </View>
   );
 
-  const renderItem = ({ item, index }) => (
+  const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Text style={styles.column}>{item['Rank']}</Text>
-      <TouchableOpacity onPress={() => fetchBowlerProfile(item['BowlerName'])}>
-        <Text style={styles.column}>{item['BowlerName']}</Text>
+      <Text style={styles.rank}>{item['Rank']}</Text>
+      <TouchableOpacity onPress={() => fetchBowlerProfile(item['BowlerName'])} style={{ flex: 3 }}>
+        <Text style={styles.playerName}>{item['BowlerName']}</Text>
       </TouchableOpacity>
-      <Text style={styles.column}>{item['Bowler Rating'].toFixed(2)}</Text>
+      <Text style={styles.rating}>{item['Bowler Rating'].toFixed(2)}</Text>
     </View>
   );
 
@@ -99,23 +107,28 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#ddd',
   },
-  headerText: {
+  rank: {
     fontSize: 16,
-    fontWeight: 'bold',
     flex: 1,
+    textAlign: 'left',
+    paddingRight: 5,
+  },
+  playerName: {
+    fontSize: 16,
+    flex: 3,
     textAlign: 'center',
+  },
+  rating: {
+    fontSize: 16,
+    flex: 1,
+    textAlign: 'right',
+    paddingLeft: 5,
   },
   item: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
-  },
-  column: {
-    fontSize: 16,
-    flex: 1,
-    textAlign: 'center',
   },
 });
 

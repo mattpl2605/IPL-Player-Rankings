@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, FlatList, ActivityIndicator, TextInput, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+  TextInput,
+  TouchableOpacity
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const BatterRankingsScreen = () => {
@@ -14,7 +22,7 @@ const BatterRankingsScreen = () => {
       .then(response => response.json())
       .then(json => {
         setData(json);
-        setFilteredData(json); // Initialize filteredData with all data
+        setFilteredData(json);
         setLoading(false);
       })
       .catch(error => {
@@ -43,19 +51,19 @@ const BatterRankingsScreen = () => {
 
   const renderHeader = () => (
     <View style={styles.header}>
-      <Text style={styles.headerText}>Rank</Text>
-      <Text style={styles.headerText}>Player</Text>
-      <Text style={styles.headerText}>Rating</Text>
+      <Text style={[styles.rank, styles.headerText]}>Rank</Text>
+      <Text style={[styles.playerName, styles.headerText]}>Player</Text>
+      <Text style={[styles.rating, styles.headerText]}>Rating</Text>
     </View>
   );
 
-  const renderItem = ({ item, index }) => (
+  const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Text style={styles.column}>{item['Rank']}</Text>
-      <TouchableOpacity onPress={() => fetchBatterProfile(item['StrikerName'])}>
-        <Text style={styles.column}>{item['StrikerName']}</Text>
+      <Text style={styles.rank}>{item['Rank']}</Text>
+      <TouchableOpacity onPress={() => fetchBatterProfile(item['StrikerName'])} style={styles.playerNameTouchable}>
+        <Text style={styles.playerName}>{item['StrikerName']}</Text>
       </TouchableOpacity>
-      <Text style={styles.column}>{item['Batter Rating'].toFixed(2)}</Text>
+      <Text style={styles.rating}>{item['Batter Rating'].toFixed(2)}</Text>
     </View>
   );
 
@@ -96,19 +104,29 @@ const styles = StyleSheet.create({
     backgroundColor: '#e0e0e0',
   },
   headerText: {
-    flex: 1,
     fontWeight: 'bold',
+  },
+  rank: {
+    flex: 1,
+    textAlign: 'left',
+  },
+  playerName: {
+    flex: 3,
     textAlign: 'center',
+  },
+  playerNameTouchable: {
+    flex: 3,
+    justifyContent: 'center',
+  },
+  rating: {
+    flex: 1,
+    textAlign: 'right',
   },
   item: {
     flexDirection: 'row',
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
-  },
-  column: {
-    flex: 1,
-    textAlign: 'center',
   },
   searchBar: {
     padding: 10,
