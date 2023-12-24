@@ -51,7 +51,7 @@ const BowlerRankingsScreen = () => {
 
   const renderItem = ({ item, index }) => (
     <View style={styles.item}>
-      <Text style={styles.column}>{index + 1}</Text>
+      <Text style={styles.column}>{item['Rank']}</Text>
       <TouchableOpacity onPress={() => fetchBowlerProfile(item['BowlerName'])}>
         <Text style={styles.column}>{item['BowlerName']}</Text>
       </TouchableOpacity>

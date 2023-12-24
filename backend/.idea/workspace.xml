@@ -2,7 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b014d9a-6b8b-4add-b2a9-af6213748ce6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/backend.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/batters-ipl-2023.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/batterscraper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bowlers-ipl-2023.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bowlerscraper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chromedriver" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chromedriver_mac64.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oldcsvs/old-orange-cap-ipl-2023.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oldcsvs/old-orange-ipl-2023.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oldcsvs/old-purple-cap-ipl-2023.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oldscrapers/oldbattersscrapers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oldscrapers/oldbowlersscrapers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rankingsandprofileapi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/assets/adaptive-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/assets/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/assets/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/assets/splash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/screens/BatterProfileScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/screens/BatterRankingsScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/screens/BowlerProfileScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/screens/BowlerRankingsScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ipl-rankings-app/screens/HomeScreen.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

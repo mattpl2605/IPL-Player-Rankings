@@ -51,7 +51,7 @@ const BatterRankingsScreen = () => {
 
   const renderItem = ({ item, index }) => (
     <View style={styles.item}>
-      <Text style={styles.column}>{index + 1}</Text>
+      <Text style={styles.column}>{item['Rank']}</Text>
       <TouchableOpacity onPress={() => fetchBatterProfile(item['StrikerName'])}>
         <Text style={styles.column}>{item['StrikerName']}</Text>
       </TouchableOpacity>
