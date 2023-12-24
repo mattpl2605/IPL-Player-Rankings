@@ -12,7 +12,7 @@ const BatterProfileScreen = ({ route }) => {
       <Text style={styles.description}>{batterProfile.player_description}</Text>
       {batterProfile.player_statistics.map((stat, index) => (
         <View key={index} style={styles.statContainer}>
-          <Text>Year: {stat.Year}</Text>
+          <Text>{stat['Career Stats'] ? `Career Stats: ${stat['Career Stats']}` : `Year: ${stat.Year}`}</Text>
           <Text>Matches: {stat.Mat}</Text>
           <Text>Runs: {stat.Runs}</Text>
           <Text>Avg: {stat.Avg}</Text>

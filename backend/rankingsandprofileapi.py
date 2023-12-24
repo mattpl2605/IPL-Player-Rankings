@@ -154,6 +154,8 @@ def extract_batter_profile_data(url):
             for tr in table.find_all('tr')[1:]:
                 cells = tr.find_all('td')
                 row_data = {headers[i]: cell.get_text(strip=True) for i, cell in enumerate(cells)}
+                if row_data.get('Year') == 'Career':
+                    row_data['Career Stats'] = row_data.pop('Year')
                 batting_stats.append(row_data)
 
         return grid_container_text, player_description_text, batting_stats
@@ -191,6 +193,8 @@ def extract_bowler_profile_data(url):
             for tr in table.find_all('tr')[1:]:
                 cells = tr.find_all('td')
                 row_data = {headers[i]: cell.get_text(strip=True) for i, cell in enumerate(cells)}
+                if row_data.get('Year') == 'Career':
+                    row_data['Career Stats'] = row_data.pop('Year')
                 bowling_stats.append(row_data)
 
         return grid_container_text, player_description_text, bowling_stats

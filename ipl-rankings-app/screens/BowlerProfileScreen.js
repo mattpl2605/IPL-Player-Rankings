@@ -11,7 +11,7 @@ const BowlerProfileScreen = ({ route }) => {
       <Text style={styles.description}>{bowlerProfile.player_description}</Text>
       {bowlerProfile.player_statistics.map((stat, index) => (
         <View key={index} style={styles.statContainer}>
-          <Text>Year: {stat.Year}</Text>
+          <Text>{stat['Career Stats'] ? `Career Stats: ${stat['Career Stats']}` : `Year: ${stat.Year}`}</Text>
           <Text>Matches: {stat.Mat}</Text>
           <Text>Wickets: {stat.WKTS}</Text>
           <Text>Average: {stat.Ave}</Text>
