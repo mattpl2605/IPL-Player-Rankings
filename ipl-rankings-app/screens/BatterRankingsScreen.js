@@ -1,10 +1,11 @@
-// BatterRankingsScreen.js
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, FlatList, ActivityIndicator, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const BatterRankingsScreen = () => {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
 
@@ -13,6 +14,7 @@ const BatterRankingsScreen = () => {
       .then(response => response.json())
       .then(json => {
         setData(json);
+        setFilteredData(json); // Initialize filteredData with all data
         setLoading(false);
       })
       .catch(error => {
@@ -20,6 +22,13 @@ const BatterRankingsScreen = () => {
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    const filtered = data.filter(item =>
+      item['StrikerName'].toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredData(filtered);
+  }, [searchQuery, data]);
 
   const fetchBatterProfile = name => {
     fetch(`http://127.0.0.1:5000/get-batter-profile?name=${encodeURIComponent(name)}`)
@@ -50,13 +59,23 @@ const BatterRankingsScreen = () => {
     </View>
   );
 
+  const renderSearchBar = () => (
+    <TextInput
+      style={styles.searchBar}
+      placeholder="Search for players..."
+      value={searchQuery}
+      onChangeText={text => setSearchQuery(text)}
+    />
+  );
+
   return (
     <View style={styles.container}>
+      {renderSearchBar()}
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
         <FlatList
-          data={data}
+          data={filteredData}
           keyExtractor={(item, index) => index.toString()}
           ListHeaderComponent={renderHeader}
           renderItem={renderItem}
@@ -91,7 +110,13 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
   },
+  searchBar: {
+    padding: 10,
+    margin: 10,
+    borderColor: '#e0e0e0',
+    borderWidth: 1,
+    borderRadius: 5,
+  },
 });
-
 
 export default BatterRankingsScreen;
