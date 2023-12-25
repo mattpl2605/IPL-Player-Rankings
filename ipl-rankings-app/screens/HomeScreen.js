@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonText: {
-    color: '#DA70D6',
+    color: '#b47ff1',
     fontSize: 16,
   },
 });

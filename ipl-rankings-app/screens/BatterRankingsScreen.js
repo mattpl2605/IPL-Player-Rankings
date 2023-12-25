@@ -9,6 +9,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 const BatterRankingsScreen = () => {
   const [data, setData] = useState([]);
@@ -67,20 +68,33 @@ const BatterRankingsScreen = () => {
     </View>
   );
 
+  const clearSearch = () => {
+    setSearchQuery('');
+  };
+
   const renderSearchBar = () => (
-    <TextInput
-      style={styles.searchBar}
-      placeholder="Search for players..."
-      value={searchQuery}
-      onChangeText={text => setSearchQuery(text)}
-    />
+    <View style={styles.searchSection}>
+      <Ionicons name="ios-search" size={20} color="grey" style={styles.searchIcon} />
+      <TextInput
+        style={styles.searchInput}
+        placeholder="Search for players..."
+        placeholderTextColor="#ffffff"
+        value={searchQuery}
+        onChangeText={text => setSearchQuery(text)}
+      />
+      {searchQuery.length > 0 && (
+        <TouchableOpacity onPress={clearSearch}>
+          <Ionicons name="ios-close-circle" size={20} color="grey" />
+        </TouchableOpacity>
+      )}
+    </View>
   );
 
   return (
     <View style={styles.container}>
       {renderSearchBar()}
       {loading ? (
-        <ActivityIndicator size="large" color="#0000ff" />
+        <ActivityIndicator size="large" color="#00ff00" />
       ) : (
         <FlatList
           data={filteredData}
@@ -96,22 +110,34 @@ const BatterRankingsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#121212',
   },
   header: {
     flexDirection: 'row',
-    padding: 10,
-    backgroundColor: '#e0e0e0',
+    paddingVertical: 25,
+    paddingHorizontal: 10,
+    backgroundColor: '#1e1e1e',
+    borderBottomColor: '#373737',
+    borderBottomWidth: 2,
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 10, // Rounded edges for the header
+    marginTop: 5
   },
   headerText: {
+    color: '#b47ff1',
     fontWeight: 'bold',
+    fontSize: 16,
   },
   rank: {
     flex: 1,
+    color: '#7CFC00',
     textAlign: 'left',
   },
   playerName: {
     flex: 3,
+    color: '#0c6af6',
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   playerNameTouchable: {
@@ -120,20 +146,43 @@ const styles = StyleSheet.create({
   },
   rating: {
     flex: 1,
+    color: '#7CFC00',
     textAlign: 'right',
   },
   item: {
     flexDirection: 'row',
-    padding: 10,
+    paddingVertical: 20,
+    paddingHorizontal: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+    borderBottomColor: '#373737',
+    backgroundColor: '#1e1e1e',
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 10, // Rounded edges for the header
+    marginTop: 10
   },
-  searchBar: {
-    padding: 10,
-    margin: 10,
-    borderColor: '#e0e0e0',
-    borderWidth: 1,
-    borderRadius: 5,
+  searchSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#1e1e1e',
+    borderRadius: 10,
+    width: '90%',
+    alignSelf: 'center',
+    marginHorizontal: 10,
+    marginVertical: 5,
+    marginTop: 10,
+    paddingHorizontal: 10,
+
+  },
+  searchIcon: {
+    marginRight: 5,
+  },
+  searchInput: {
+    flex: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 5,
+    fontSize: 16,
+    color: '#ffffff',
   },
 });
 
