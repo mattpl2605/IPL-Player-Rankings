@@ -134,29 +134,33 @@ def extract_batter_profile_data(url):
         driver.implicitly_wait(10)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        # Extract and process player description and grid container
-        player_description = soup.find('div', class_='ih-td-text')
-        player_description_text = player_description.get_text(strip=True)
-        if player_description:
-            player_description_text = player_description.get_text(strip=True)
-            player_description_text = player_description_text.replace('\n', '')
-        else:
-            None
-        grid_container = soup.find('div', class_='grid-container')
-        grid_container_text = ' | '.join([': '.join([item.find('span').get_text(strip=True), item.find('p').get_text(strip=True)]) for item in grid_container.find_all('div', class_='grid-items')]) if grid_container else None
-
-        # Extract and process player batting career statistics table
-        batting_stats_table = soup.find('div', class_='sm-pp__stats-box')
+        # Initialize variables to store player info
+        player_description_text = ''
+        grid_container_text = None
         batting_stats = []
+
+        # Extract player description
+        player_description = soup.find('div', class_='ih-td-text')
+        if player_description:
+            player_description_text = player_description.get_text(strip=True).replace('\n', '')
+
+        # Extract grid container info
+        grid_container = soup.find('div', class_='grid-container')
+        if grid_container:
+            grid_container_text = ' | '.join([': '.join([item.find('span').get_text(strip=True), item.find('p').get_text(strip=True)]) for item in grid_container.find_all('div', class_='grid-items')])
+
+        # Extract player batting career statistics table
+        batting_stats_table = soup.find('div', class_='sm-pp__stats-box')
         if batting_stats_table:
             table = BeautifulSoup(str(batting_stats_table), 'html.parser').find('table')
-            headers = [th.get_text(strip=True) for th in table.find_all('th')]
-            for tr in table.find_all('tr')[1:]:
-                cells = tr.find_all('td')
-                row_data = {headers[i]: cell.get_text(strip=True) for i, cell in enumerate(cells)}
-                if row_data.get('Year') == 'Career':
-                    row_data['Career Stats'] = row_data.pop('Year')
-                batting_stats.append(row_data)
+            if table:
+                headers = [th.get_text(strip=True) for th in table.find_all('th')]
+                for tr in table.find_all('tr')[1:]:
+                    cells = tr.find_all('td')
+                    row_data = {headers[i]: cell.get_text(strip=True) for i, cell in enumerate(cells)}
+                    if row_data.get('Year') == 'Career':
+                        row_data['Career Stats'] = row_data.pop('Year')
+                    batting_stats.append(row_data)
 
         return grid_container_text, player_description_text, batting_stats
 
@@ -165,6 +169,7 @@ def extract_batter_profile_data(url):
     finally:
         driver.quit()
 
+
 def extract_bowler_profile_data(url):
     driver = webdriver.Chrome(ChromeDriverManager().install())
     try:
@@ -172,30 +177,34 @@ def extract_bowler_profile_data(url):
         driver.implicitly_wait(10)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        # Extract and process player description and grid container
-        player_description = soup.find('div', class_='ih-td-text')
-        player_description_text = player_description.get_text(strip=True)
-        if player_description:
-            player_description_text = player_description.get_text(strip=True)
-            player_description_text = player_description_text.replace('\n', '')
-        else:
-            None
-        grid_container = soup.find('div', class_='grid-container')
-        grid_container_text = ' | '.join([': '.join([item.find('span').get_text(strip=True), item.find('p').get_text(strip=True)]) for item in grid_container.find_all('div', class_='grid-items')]) if grid_container else None
-
-        # Extract and process player bowling career statistics table
-        bowling_stats_containers = soup.find_all('div', class_='sm-pp__stats-box')
-        bowling_stats_table = bowling_stats_containers[1] if len(bowling_stats_containers) > 1 else None
+        # Initialize variables to store player info
+        player_description_text = ''
+        grid_container_text = None
         bowling_stats = []
-        if bowling_stats_table:
+
+        # Extract player description
+        player_description = soup.find('div', class_='ih-td-text')
+        if player_description:
+            player_description_text = player_description.get_text(strip=True).replace('\n', '')
+
+        # Extract grid container info
+        grid_container = soup.find('div', class_='grid-container')
+        if grid_container:
+            grid_container_text = ' | '.join([': '.join([item.find('span').get_text(strip=True), item.find('p').get_text(strip=True)]) for item in grid_container.find_all('div', class_='grid-items')])
+
+        # Extract player bowling career statistics table
+        bowling_stats_containers = soup.find_all('div', class_='sm-pp__stats-box')
+        if bowling_stats_containers and len(bowling_stats_containers) > 1:
+            bowling_stats_table = bowling_stats_containers[1]
             table = BeautifulSoup(str(bowling_stats_table), 'html.parser').find('table')
-            headers = [th.get_text(strip=True) for th in table.find_all('th')]
-            for tr in table.find_all('tr')[1:]:
-                cells = tr.find_all('td')
-                row_data = {headers[i]: cell.get_text(strip=True) for i, cell in enumerate(cells)}
-                if row_data.get('Year') == 'Career':
-                    row_data['Career Stats'] = row_data.pop('Year')
-                bowling_stats.append(row_data)
+            if table:
+                headers = [th.get_text(strip=True) for th in table.find_all('th')]
+                for tr in table.find_all('tr')[1:]:
+                    cells = tr.find_all('td')
+                    row_data = {headers[i]: cell.get_text(strip=True) for i, cell in enumerate(cells)}
+                    if row_data.get('Year') == 'Career':
+                        row_data['Career Stats'] = row_data.pop('Year')
+                    bowling_stats.append(row_data)
 
         return grid_container_text, player_description_text, bowling_stats
 
