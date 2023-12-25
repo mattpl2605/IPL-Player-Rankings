@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -11,44 +11,53 @@ const HomeScreen = ({ navigation }) => {
     // Add other IPL seasons here
   ]);
 
-  // Reset the state when the screen is focused
   useFocusEffect(
     useCallback(() => {
       setSeason(null);
       setOpen(false);
-      // Optionally, if you have other state variables to reset, do it here.
-
-      return () => {
-        // Optional cleanup actions on blur
-      };
+      return () => {};
     }, [])
   );
 
+  const customLabelStyle = { color: 'white' }; // Style for selected item
+  const customPlaceholderStyle = { color: 'white' }; // Style for placeholder text
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Select an IPL Season</Text>
-      <DropDownPicker
-        open={open}
-        value={season}
-        items={items}
-        setOpen={setOpen}
-        setValue={setSeason}
-        setItems={setItems}
-        zIndex={3000}
-        zIndexInverse={1000}
-      />
-      {season && (
-        <View style={styles.buttonContainer}>
-          <Button
-            title="Batter Rankings"
-            onPress={() => navigation.navigate('BatterRankings')}
-          />
-          <Button
-            title="Bowler Rankings"
-            onPress={() => navigation.navigate('BowlerRankings')}
-          />
-        </View>
-      )}
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Select an IPL Season</Text>
+      </View>
+      <View style={styles.content}>
+        <DropDownPicker
+          open={open}
+          value={season}
+          items={items}
+          setOpen={setOpen}
+          setValue={setSeason}
+          setItems={setItems}
+          zIndex={3000}
+          zIndexInverse={1000}
+          style={styles.dropdown}
+          labelStyle={customLabelStyle} // Set the label text color to white for the selected item
+          placeholderStyle={customPlaceholderStyle} // Set the placeholder text color to white
+        />
+        {season && (
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('BatterRankings')}
+            >
+              <Text style={styles.buttonText}>Batter Rankings</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('BowlerRankings')}
+            >
+              <Text style={styles.buttonText}>Bowler Rankings</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
     </View>
   );
 };
@@ -56,21 +65,50 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#121212',
+  },
+  titleContainer: {
+    height: Dimensions.get('window').height / 4,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
-    backgroundColor: '#fff',
   },
   title: {
-    fontSize: 20,
-    marginBottom: 20,
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#7CFC00',
     textAlign: 'center',
   },
-  buttonContainer: {
-    marginTop: 20,
-    width: '100%',
+  content: {
+    width: '90%', // You can adjust this width as needed
+    alignItems: 'center',
   },
-  // ... possibly other styles you may have ...
+  dropdown: {
+    width: '100%',
+    backgroundColor: 'transparent', // Assuming the dropdown is transparent
+    borderColor: '#00FFFF', // Cyan-like border color, adjust as needed
+    borderWidth: 1,
+    borderRadius: 10, // Adjust radius to match the image
+    marginBottom: 10,
+  },
+  buttonContainer: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor: '#1F1F1F',
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    marginBottom: 10,
+  },
+  buttonText: {
+    color: '#DA70D6',
+    fontSize: 16,
+  },
 });
 
 export default HomeScreen;
