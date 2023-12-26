@@ -25,7 +25,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>IPL Player Rankings</Text>
+        <Text style={styles.title}>Select an IPL Season</Text>
       </View>
       <View style={styles.content}>
         <DropDownPicker
@@ -40,7 +40,6 @@ const HomeScreen = ({ navigation }) => {
           style={styles.dropdown}
           labelStyle={customLabelStyle} 
           placeholderStyle={customPlaceholderStyle} 
-          arrowColor="#ffffff" 
         />
         {season && (
           <View style={styles.buttonContainer}>
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#b47ff1',
+    color: '#7CFC00',
     textAlign: 'center',
   },
   content: {
@@ -86,13 +85,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dropdown: {
-    paddingHorizontal: 10,
-    backgroundColor: '#1e1e1e',
-    borderBottomColor: '#373737',
-    borderBottomWidth: 2,
     width: '100%',
-    borderWidth: 0, // No border around the dropdown
-    borderRadius: 10,
+    backgroundColor: 'transparent', 
+    borderColor: '#00FFFF', 
+    borderWidth: 1,
+    borderRadius: 10, 
     marginBottom: 10,
   },
   buttonContainer: {
@@ -100,18 +97,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    backgroundColor: '#1e1e1e', // Match the header's background color
+    backgroundColor: '#1F1F1F',
     padding: 15,
-    borderRadius: 10, // Match the header's border radius
+    borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
     marginBottom: 10,
-    borderBottomColor: '#373737', // Match the header's bottom border color
-    borderBottomWidth: 2, // Match the header's bottom border width
-  },  
+  },
   buttonText: {
-    color: '#7CFC00',
+    color: '#b47ff1',
     fontSize: 16,
   },
 });
