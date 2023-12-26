@@ -1,114 +1,120 @@
-import React, { useState, useCallback } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { useFocusEffect } from '@react-navigation/native';
+import React from 'react';
+import { ScrollView, Text, View, StyleSheet } from 'react-native';
 
-const HomeScreen = ({ navigation }) => {
-  const [season, setSeason] = useState(null);
-  const [open, setOpen] = useState(false);
-  const [items, setItems] = useState([
-    { label: '2023', value: '2023' },
-    // Add other IPL seasons here
-  ]);
-
-  useFocusEffect(
-    useCallback(() => {
-      setSeason(null);
-      setOpen(false);
-      return () => {};
-    }, [])
-  );
-
-  const customLabelStyle = { color: 'white' }; 
-  const customPlaceholderStyle = { color: 'white' }; 
-
+const AboutScreen = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Select an IPL Season</Text>
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>Batter Rating Formula Methodology</Text>
+      
+      {/* Weighting Factors */}
+      <Text style={[styles.subtitle, styles.subtitleMargin]}>Weighting Factors</Text>
+      <View style={styles.gridInfoContainer}>
+        <Text style={styles.contentText}>
+          We assigned weights to three key batting statistics - runs scored, strike rate, and batting average. These weights were determined based on their relative importance in evaluating a batter's performance: 43% for runs, 34% for strike rate, and 23% for batting average.
+        </Text>
       </View>
-      <View style={styles.content}>
-        <DropDownPicker
-          open={open}
-          value={season}
-          items={items}
-          setOpen={setOpen}
-          setValue={setSeason}
-          setItems={setItems}
-          zIndex={3000}
-          zIndexInverse={1000}
-          style={styles.dropdown}
-          labelStyle={customLabelStyle} 
-          placeholderStyle={customPlaceholderStyle} 
-        />
-        {season && (
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigation.navigate('BatterRankings')}
-            >
-              <Text style={styles.buttonText}>Batter Rankings</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigation.navigate('BowlerRankings')}
-            >
-              <Text style={styles.buttonText}>Bowler Rankings</Text>
-            </TouchableOpacity>
-          </View>
-        )}
+
+      {/* Normalization */}
+      <Text style={[styles.subtitle, styles.subtitleMargin]}>Normalization</Text>
+      <View style={styles.gridInfoContainer}>
+        <Text style={styles.contentText}>
+          We normalized each of these statistics to a common scale to ensure fair comparison across different players. This involved transforming the values into a range of 0 to 1, where higher values indicate better performance.
+        </Text>
       </View>
-    </View>
+
+      {/* Threshold and Reduced Weight Factor */}
+      <Text style={[styles.subtitle, styles.subtitleMargin]}>Threshold and Reduced Weight Factor</Text>
+      <View style={styles.gridInfoContainer}>
+        <Text style={styles.contentText}>
+          To account for cases where a player had limited opportunities to bat, we introduced a threshold. If a player's runs scored were below this threshold, we applied a reduced weight factor to their ratings, acknowledging their limited contributions.
+        </Text>
+      </View>
+
+      {/* Batter Rating Calculation */}
+      <Text style={[styles.subtitle, styles.subtitleMargin]}>Batter Rating Calculation</Text>
+      <View style={styles.gridInfoContainer}>
+        <Text style={styles.contentText}>
+          The final batter rating was calculated by combining the normalized values of runs, strike rate, and batting average, with their respective weights. If the player's runs were below the threshold, the reduced weight factor was applied.
+        </Text>
+      </View>
+
+      <Text style={styles.title}>Bowler Rating Formula Methodology</Text>
+
+      {/* Weighting Factors */}
+      <Text style={[styles.subtitle, styles.subtitleMargin]}>Weighting Factors</Text>
+      <View style={styles.gridInfoContainer}>
+        <Text style={styles.contentText}>
+          We assigned weights to four key bowling statistics - wickets taken, economy rate, bowling average, and bowling strike rate. These weights were determined based on their relative importance in evaluating a bowler's performance: 40% for wickets, 30% for economy rate, 20% for bowling strike rate, and 10% for bowling average.
+        </Text>
+      </View>
+
+      {/* Normalization */}
+      <Text style={[styles.subtitle, styles.subtitleMargin]}>Normalization</Text>
+      <View style={styles.gridInfoContainer}>
+        <Text style={styles.contentText}>
+          We normalized each of these statistics to a common scale to ensure fair comparison across different players. This involved transforming the values into a range of 0 to 1, where higher values indicate better performance.
+        </Text>
+      </View>
+
+      {/* Threshold for Low Wickets */}
+      <Text style={[styles.subtitle, styles.subtitleMargin]}>Threshold for Low Wickets</Text>
+      <View style={styles.gridInfoContainer}>
+        <Text style={styles.contentText}>
+          To account for cases where a bowler had taken very few wickets, we applied a reduced weight factor to their ratings if they had taken less than 5 wickets.
+        </Text>
+      </View>
+
+      {/* Bowler Rating Calculation */}
+      <Text style={[styles.subtitle, styles.subtitleMargin]}>Bowler Rating Calculation</Text>
+      <View style={styles.gridInfoContainer}>
+        <Text style={styles.contentText}>
+          The final bowler rating was calculated by combining the normalized values of wickets, economy rate, bowling average, and bowling strike rate, with their respective weights. If the bowler had taken fewer than 5 wickets, the reduced weight factor was applied.
+        </Text>
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
     backgroundColor: '#121212',
-  },
-  titleContainer: {
-    height: Dimensions.get('window').height / 4,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 10,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#7CFC00',
+    marginBottom: 10,
     textAlign: 'center',
-  },
-  content: {
-    width: '90%', 
-    alignItems: 'center',
-  },
-  dropdown: {
-    width: '100%',
-    backgroundColor: 'transparent', 
-    borderColor: '#00FFFF', 
-    borderWidth: 1,
-    borderRadius: 10, 
-    marginBottom: 10,
-  },
-  buttonContainer: {
-    width: '100%',
-    alignItems: 'center',
-  },
-  button: {
-    backgroundColor: '#1F1F1F',
-    padding: 15,
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    marginBottom: 10,
-  },
-  buttonText: {
     color: '#b47ff1',
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#0c6af6',
+    marginLeft: 20,
+  },
+  subtitleMargin: {
+    marginTop: 20,
+    marginBottom: 5,
+  },
+  gridInfoContainer: {
+    flexDirection: 'column',
+    paddingVertical: 25,
+    paddingHorizontal: 10,
+    backgroundColor: '#1e1e1e',
+    borderBottomColor: '#373737',
+    borderBottomWidth: 2,
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 10,
+    marginBottom: 20,
+  },
+  contentText: {
     fontSize: 16,
+    color: '#0cc4eb',
+    textAlign: 'justify',
   },
 });
 
-export default HomeScreen;
+export default AboutScreen;

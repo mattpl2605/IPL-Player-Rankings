@@ -24,6 +24,7 @@ function HomeStack() {
       <Stack.Screen name="BowlerRankings" component={BowlerRankingsScreen} />
       <Stack.Screen name="BatterProfileScreen" component={BatterProfileScreen} />
       <Stack.Screen name="BowlerProfileScreen" component={BowlerProfileScreen} />
+      <Stack.Screen name="About" component={AboutScreen} />
     </Stack.Navigator>
   );
 }
@@ -40,7 +41,6 @@ function App() {
             } else if (route.name === 'About') {
               iconName = focused ? 'information-circle' : 'information-circle-outline';
             }
-            // The `color` variable is applied here to set the icon color
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: '#0cc4eb', // Active icon and text color
@@ -49,11 +49,26 @@ function App() {
             backgroundColor: '#1e1e1e', // Tab bar background color
           },
           tabBarLabelStyle: {
-            color: '#0cc4eb', // This ensures the text color is consistent with the icon color
+            color: '#0cc4eb', // Text color
           },
         })}
       >
-        <Tab.Screen name="HomeStack" component={HomeStack} options={{ headerShown: false, title: 'Home' }} />
+        <Tab.Screen 
+          name="HomeStack" 
+          component={HomeStack} 
+          options={{
+            headerShown: false, 
+            title: 'Home',
+            listeners: ({ navigation, route }) => ({
+              tabPress: e => {
+                // Prevent default action
+                e.preventDefault();
+                // Navigate to the HomeStack's first screen
+                navigation.navigate('Home');
+              },
+            }),
+          }} 
+        />
         <Tab.Screen name="About" component={AboutScreen} />
       </Tab.Navigator>
     </NavigationContainer>
@@ -61,3 +76,4 @@ function App() {
 }
 
 export default App;
+
