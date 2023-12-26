@@ -4,18 +4,18 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-// Import your screen components
+
 import HomeScreen from './screens/HomeScreen';
 import BatterRankingsScreen from './screens/BatterRankingsScreen';
 import BowlerRankingsScreen from './screens/BowlerRankingsScreen';
 import BatterProfileScreen from './screens/BatterProfileScreen';
 import BowlerProfileScreen from './screens/BowlerProfileScreen';
-import AboutScreen from './screens/AboutScreen'; // Ensure this component is created
+import AboutScreen from './screens/AboutScreen'; 
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// Create a HomeStack that includes HomeScreen and other screens you might want to include
+
 function HomeStack() {
   return (
     <Stack.Navigator>
@@ -43,13 +43,13 @@ function App() {
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: '#0cc4eb', // Active icon and text color
-          tabBarInactiveTintColor: '#0cc4eb', // Inactive icon and text color
+          tabBarActiveTintColor: '#0cc4eb', 
+          tabBarInactiveTintColor: '#0cc4eb', 
           tabBarStyle: {
-            backgroundColor: '#1e1e1e', // Tab bar background color
+            backgroundColor: '#1e1e1e', 
           },
           tabBarLabelStyle: {
-            color: '#0cc4eb', // Text color
+            color: '#0cc4eb', 
           },
         })}
       >
@@ -61,9 +61,7 @@ function App() {
             title: 'Home',
             listeners: ({ navigation, route }) => ({
               tabPress: e => {
-                // Prevent default action
                 e.preventDefault();
-                // Navigate to the HomeStack's first screen
                 navigation.navigate('Home');
               },
             }),

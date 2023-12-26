@@ -6,7 +6,7 @@ const AboutScreen = () => {
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Batter Rating Formula Methodology</Text>
       
-      {/* Weighting Factors */}
+      
       <Text style={[styles.subtitle, styles.subtitleMargin]}>Weighting Factors</Text>
       <View style={styles.gridInfoContainer}>
         <Text style={styles.contentText}>
@@ -14,7 +14,7 @@ const AboutScreen = () => {
         </Text>
       </View>
 
-      {/* Normalization */}
+      
       <Text style={[styles.subtitle, styles.subtitleMargin]}>Normalization</Text>
       <View style={styles.gridInfoContainer}>
         <Text style={styles.contentText}>
@@ -30,7 +30,7 @@ const AboutScreen = () => {
         </Text>
       </View>
 
-      {/* Batter Rating Calculation */}
+      
       <Text style={[styles.subtitle, styles.subtitleMargin]}>Batter Rating Calculation</Text>
       <View style={styles.gridInfoContainer}>
         <Text style={styles.contentText}>
@@ -40,7 +40,7 @@ const AboutScreen = () => {
 
       <Text style={styles.title}>Bowler Rating Formula Methodology</Text>
 
-      {/* Weighting Factors */}
+      
       <Text style={[styles.subtitle, styles.subtitleMargin]}>Weighting Factors</Text>
       <View style={styles.gridInfoContainer}>
         <Text style={styles.contentText}>
@@ -48,7 +48,7 @@ const AboutScreen = () => {
         </Text>
       </View>
 
-      {/* Normalization */}
+      
       <Text style={[styles.subtitle, styles.subtitleMargin]}>Normalization</Text>
       <View style={styles.gridInfoContainer}>
         <Text style={styles.contentText}>
@@ -56,7 +56,7 @@ const AboutScreen = () => {
         </Text>
       </View>
 
-      {/* Threshold for Low Wickets */}
+      
       <Text style={[styles.subtitle, styles.subtitleMargin]}>Threshold for Low Wickets</Text>
       <View style={styles.gridInfoContainer}>
         <Text style={styles.contentText}>
@@ -64,7 +64,7 @@ const AboutScreen = () => {
         </Text>
       </View>
 
-      {/* Bowler Rating Calculation */}
+      
       <Text style={[styles.subtitle, styles.subtitleMargin]}>Bowler Rating Calculation</Text>
       <View style={styles.gridInfoContainer}>
         <Text style={styles.contentText}>

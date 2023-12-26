@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   gridItem: {
     fontSize: 20,
-    color: '#0c6af6', // Updated color
+    color: '#0c6af6', 
     textAlign: 'center',
     marginBottom: 5,
   },
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
-    color: '#0cc4eb', // Updated color
+    color: '#0cc4eb', 
     textAlign: 'center',
   },
   statContainer: {
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   statText: {
     fontSize: 16,
-    color: '#7CFC00', // Updated color
+    color: '#7CFC00', 
     marginBottom: 5,
   },
 });

@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#373737',
     borderBottomWidth: 2,
     width: '100%',
-    borderWidth: 0, // No border around the dropdown
+    borderWidth: 0, 
     borderRadius: 10,
     marginBottom: 10,
   },
@@ -100,15 +100,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    backgroundColor: '#1e1e1e', // Match the header's background color
+    backgroundColor: '#1e1e1e', 
     padding: 15,
-    borderRadius: 10, // Match the header's border radius
+    borderRadius: 10, 
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
     marginBottom: 10,
-    borderBottomColor: '#373737', // Match the header's bottom border color
-    borderBottomWidth: 2, // Match the header's bottom border width
+    borderBottomColor: '#373737',
+    borderBottomWidth: 2, 
   },  
   buttonText: {
     color: '#7CFC00',
