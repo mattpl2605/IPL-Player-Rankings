@@ -19,8 +19,8 @@ const HomeScreen = ({ navigation }) => {
     }, [])
   );
 
-  const customLabelStyle = { color: 'white' }; // Style for selected item
-  const customPlaceholderStyle = { color: 'white' }; // Style for placeholder text
+  const customLabelStyle = { color: 'white' }; 
+  const customPlaceholderStyle = { color: 'white' }; 
 
   return (
     <View style={styles.container}>
@@ -38,8 +38,8 @@ const HomeScreen = ({ navigation }) => {
           zIndex={3000}
           zIndexInverse={1000}
           style={styles.dropdown}
-          labelStyle={customLabelStyle} // Set the label text color to white for the selected item
-          placeholderStyle={customPlaceholderStyle} // Set the placeholder text color to white
+          labelStyle={customLabelStyle} 
+          placeholderStyle={customPlaceholderStyle} 
         />
         {season && (
           <View style={styles.buttonContainer}>
@@ -81,15 +81,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   content: {
-    width: '90%', // You can adjust this width as needed
+    width: '90%', 
     alignItems: 'center',
   },
   dropdown: {
     width: '100%',
-    backgroundColor: 'transparent', // Assuming the dropdown is transparent
-    borderColor: '#00FFFF', // Cyan-like border color, adjust as needed
+    backgroundColor: 'transparent', 
+    borderColor: '#00FFFF', 
     borderWidth: 1,
-    borderRadius: 10, // Adjust radius to match the image
+    borderRadius: 10, 
     marginBottom: 10,
   },
   buttonContainer: {

@@ -52,9 +52,9 @@ const BowlerRankingsScreen = () => {
 
   const renderHeader = () => (
     <View style={styles.header}>
-      <Text style={styles.headerText}>Rank</Text>
-      <Text style={styles.headerText}>Player</Text>
-      <Text style={styles.headerText}>Rating</Text>
+      <Text style={[styles.rank, styles.headerText]}>Rank</Text>
+      <Text style={[styles.playerName, styles.headerText]}>Player</Text>
+      <Text style={[styles.rating, styles.headerText]}>Rating</Text>
     </View>
   );
 
@@ -77,13 +77,13 @@ const BowlerRankingsScreen = () => {
       <Ionicons name="ios-search" size={20} color="grey" style={styles.searchIcon} />
       <TextInput
         style={styles.searchInput}
-        placeholder="Search Player"
+        placeholder="Search for players..."
         placeholderTextColor="#ffffff"
         value={searchQuery}
         onChangeText={text => setSearchQuery(text)}
       />
       {searchQuery.length > 0 && (
-        <TouchableOpacity onPress={clearSearch} style={styles.clearIcon}>
+        <TouchableOpacity onPress={clearSearch}>
           <Ionicons name="ios-close-circle" size={20} color="grey" />
         </TouchableOpacity>
       )}
@@ -112,28 +112,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#121212',
   },
-  searchSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#1e1e1e',
-    borderRadius: 10,
-    width: '90%',
-    alignSelf: 'center',
-    marginTop: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 12,
-  },
-  searchIcon: {
-    marginRight: 10,
-  },
-  searchInput: {
-    flex: 1,
-    fontSize: 16,
-    color: '#ffffff',
-  },
-  clearIcon: {
-    padding: 10,
-  },
   header: {
     flexDirection: 'row',
     paddingVertical: 25,
@@ -144,8 +122,7 @@ const styles = StyleSheet.create({
     width: '90%',
     alignSelf: 'center',
     borderRadius: 10,
-    marginTop: 12,
-    justifyContent: 'space-between',
+    marginTop: 5,
   },
   headerText: {
     color: '#b47ff1',
@@ -183,6 +160,28 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 10,
     marginTop: 10,
+  },
+  searchSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#1e1e1e',
+    borderRadius: 10,
+    width: '90%',
+    alignSelf: 'center',
+    marginHorizontal: 10,
+    marginVertical: 5,
+    marginTop: 10,
+    paddingHorizontal: 10,
+  },
+  searchIcon: {
+    marginRight: 5,
+  },
+  searchInput: {
+    flex: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 5,
+    fontSize: 16,
+    color: '#ffffff',
   },
 });
 

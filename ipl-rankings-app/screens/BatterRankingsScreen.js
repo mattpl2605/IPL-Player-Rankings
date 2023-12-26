@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     width: '90%',
     alignSelf: 'center',
-    borderRadius: 10, // Rounded edges for the header
+    borderRadius: 10, 
     marginTop: 5
   },
   headerText: {
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1e1e1e',
     width: '90%',
     alignSelf: 'center',
-    borderRadius: 10, // Rounded edges for the header
+    borderRadius: 10, 
     marginTop: 10
   },
   searchSection: {
